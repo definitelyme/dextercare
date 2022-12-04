@@ -9,7 +9,11 @@ import 'package:cloud_firestore/cloud_firestore.dart' as _i8;
 import 'package:dextercare/features/auth/data/repositories/auth_facade_impl.dart'
     as _i12;
 import 'package:dextercare/features/auth/domain/index.dart' as _i11;
-import 'package:dextercare/managers/locator/modules.dart' as _i13;
+import 'package:dextercare/features/auth/presentation/managers/auth_watcher/auth_watcher_cubit.dart'
+    as _i13;
+import 'package:dextercare/features/auth/presentation/managers/cubit/auth_cubit.dart'
+    as _i14;
+import 'package:dextercare/managers/locator/modules.dart' as _i15;
 import 'package:dextercare/managers/navigation/navigation.dart' as _i3;
 import 'package:dextercare/managers/theme/theme_cubit.dart' as _i10;
 import 'package:firebase_analytics/firebase_analytics.dart' as _i4;
@@ -53,12 +57,15 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i6.FirebaseAuth>(),
           gh<_i9.GoogleSignIn>(),
         ));
+    gh.singleton<_i13.AuthWatcherCubit>(
+        _i13.AuthWatcherCubit(gh<_i11.AuthFacade>()));
+    gh.factory<_i14.AuthCubit>(() => _i14.AuthCubit(gh<_i11.AuthFacade>()));
     return this;
   }
 }
 
-class _$FirebaseModules extends _i13.FirebaseModules {}
+class _$FirebaseModules extends _i15.FirebaseModules {}
 
-class _$AppModules extends _i13.AppModules {}
+class _$AppModules extends _i15.AppModules {}
 
-class _$ServiceModules extends _i13.ServiceModules {}
+class _$ServiceModules extends _i15.ServiceModules {}
