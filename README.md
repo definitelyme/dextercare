@@ -34,7 +34,7 @@ next shift (you can choose which alternative you want to implement).
 
 ## Breakdown of tasks & milestones
 
-### Project Setup
+#### Project Setup
     - [ ] Create Flutter project
     - [ ] Add project assets (images, icons, fonts, etc.)
     - [ ] Add project dependencies (packages)
@@ -43,7 +43,7 @@ next shift (you can choose which alternative you want to implement).
     - [ ] Setup project navigation (routes, navigation service, etc.)
     - [ ] Setup project state management (provider, bloc, etc.)
 
-### Design & UI
+#### Design & UI
     - Design Screens:
         - [ ] Mobile - Authentication Screen
         - [ ] Mobile - Tasks List Screen
@@ -57,7 +57,7 @@ next shift (you can choose which alternative you want to implement).
         - [ ] Dialog
         - [ ] Card
 
-### Database Setup & Structure
+#### Database Setup & Structure
     - [ ] Setup Firebase project
     - [ ] Setup Firebase authentication
     - [ ] Setup Firebase Firestore
@@ -65,14 +65,14 @@ next shift (you can choose which alternative you want to implement).
     - [ ] Create Tasks collection & populate with test data
     - [ ] Create Shifts collection & populate with test data
 
-### Business Logic
+#### Business Logic
     - [ ] Authentication
     - [ ] Get Tasks
     - [ ] Create Task
     - [ ] Edit Task
     - [ ] Mark Task as Complete
 
-### Expected Behaviour
+#### Expected Behaviour
     - [ ] User can login
     - [ ] The todo list should show all tasks for this specific nurse for the whole shift
     - [ ] The nurse should be able to mark tasks as "done“
@@ -82,11 +82,11 @@ next shift (you can choose which alternative you want to implement).
         - [ ] automatically by the system
     - [ ] The todo-list should actually work. It should theoretically work for any user, not only the "hardcoded“ example user.
 
-### Testing
+#### Testing
     - [ ] Unit Testing
     - [ ] Integration Testing
 
-### Documentation
+#### Documentation
     - [ ] Done
 
 #### Refactor & Clean up
