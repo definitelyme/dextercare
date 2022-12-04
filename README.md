@@ -72,7 +72,7 @@ next shift (you can choose which alternative you want to implement).
     - [ ] Edit Task
     - [ ] Mark Task as Complete
 
-    ### Expected Behaviour
+### Expected Behaviour
     - [ ] User can login
     - [ ] The todo list should show all tasks for this specific nurse for the whole shift
     - [ ] The nurse should be able to mark tasks as "done“
