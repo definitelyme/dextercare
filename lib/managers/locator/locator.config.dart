@@ -9,10 +9,10 @@ import 'package:cloud_firestore/cloud_firestore.dart' as _i8;
 import 'package:dextercare/features/auth/data/repositories/auth_facade_impl.dart'
     as _i12;
 import 'package:dextercare/features/auth/domain/index.dart' as _i11;
+import 'package:dextercare/features/auth/presentation/managers/auth_cubit/auth_cubit.dart'
+    as _i14;
 import 'package:dextercare/features/auth/presentation/managers/auth_watcher/auth_watcher_cubit.dart'
     as _i13;
-import 'package:dextercare/features/auth/presentation/managers/cubit/auth_cubit.dart'
-    as _i14;
 import 'package:dextercare/managers/locator/modules.dart' as _i15;
 import 'package:dextercare/managers/navigation/navigation.dart' as _i3;
 import 'package:dextercare/managers/theme/theme_cubit.dart' as _i10;

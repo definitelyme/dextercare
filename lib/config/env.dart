@@ -23,7 +23,7 @@ class BuildEnvironment {
   /// Sets up the top-level [env] getter on the first call only.
   static Future<void> init() async {
     // Initialize dependencies
-    dependencyInjector();
+    await dependencyInjector();
     // Initialize the Hive client
     await HiveClient.initialize();
   }

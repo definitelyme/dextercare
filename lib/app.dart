@@ -1,6 +1,7 @@
 library app.dart;
 
 import 'package:auto_route/auto_route.dart';
+import 'package:dextercare/features/auth/presentation/index.dart';
 import 'package:enough_platform_widgets/enough_platform_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -22,6 +23,7 @@ class AppView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<ThemeCubit>()),
+        BlocProvider(create: (_) => getIt<AuthWatcherCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, AppTheme>(
         builder: (_, app) => PlatformApp.router(

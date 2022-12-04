@@ -13,4 +13,4 @@ final GetIt getIt = GetIt.I;
 ///
 /// Example: getIt<FirebaseAuth>()
 @InjectableInit(preferRelativeImports: false, asExtension: true, generateForDir: ['lib'])
-void dependencyInjector([String? env]) => getIt.init(environment: env);
+Future<void> dependencyInjector([String? env]) async => await getIt.init(environment: env);
