@@ -44,6 +44,7 @@ next shift (you can choose which alternative you want to implement).
     - [x] Setup project state management (provider, bloc, etc.)
 
 #### Design & UI
+    UI Design gotten from Pinterest: [https://www.pinterest.com/pin/369154500717175993/](https://www.pinterest.com/pin/369154500717175993/)
     - Design Screens:
         - [ ] Mobile - Authentication Screen
         - [ ] Mobile - Tasks List Screen
