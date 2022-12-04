@@ -1,3 +1,11 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -21,6 +29,12 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 def debugStoreFile = keystoreProperties.getProperty('debug.file')
 def debugStorePassword = keystoreProperties.getProperty('debug.storePassword')
 def debugKeyAlias = keystoreProperties.getProperty('debug.alias')
@@ -31,13 +45,10 @@ def prodStorePassword = keystoreProperties.getProperty('prod.storePassword')
 def prodKeyAlias = keystoreProperties.getProperty('prod.alias')
 def prodKeyPassword = keystoreProperties.getProperty('prod.keyPassword')
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 33
-    ndkVersion flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -58,10 +69,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.dexterhealth.dextercare"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 26
         targetSdkVersion 33
         multiDexEnabled true

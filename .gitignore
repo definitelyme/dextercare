@@ -33,11 +33,7 @@ migrate_working_dir/
 /build/
 pubspec.lock
 /lib/config/secrets.dart
-/lib/config/firebase_options.dart
-lib/config/secrets.dart
-lib/config/firebase_options_dev.dart
-lib/config/firebase_options_beta.dart
-lib/config/firebase_options_prod.dart
+**/firebase_options.dart
 
 # Web related
 lib/generated_plugin_registrant.dart

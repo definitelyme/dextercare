@@ -35,13 +35,13 @@ next shift (you can choose which alternative you want to implement).
 ## Breakdown of tasks & milestones
 
 #### Project Setup
-    - [ ] Create Flutter project
-    - [ ] Add project assets (images, icons, fonts, etc.)
-    - [ ] Add project dependencies (packages)
-    - [ ] Setup project design system & configuration (colors, fonts, styles, etc.)
-    - [ ] Configure project structure using Clean Architecture (folders, files, etc.)
-    - [ ] Setup project navigation (routes, navigation service, etc.)
-    - [ ] Setup project state management (provider, bloc, etc.)
+    - [x] Create Flutter project
+    - [x] Add project assets (images, icons, fonts, etc.)
+    - [x] Add project dependencies (packages)
+    - [x] Setup project design system & configuration (colors, fonts, styles, etc.)
+    - [x] Configure project structure using Clean Architecture (folders, files, etc.)
+    - [x] Setup project navigation (routes, navigation service, etc.)
+    - [x] Setup project state management (provider, bloc, etc.)
 
 #### Design & UI
     - Design Screens:
@@ -58,12 +58,12 @@ next shift (you can choose which alternative you want to implement).
         - [ ] Card
 
 #### Database Setup & Structure
-    - [ ] Setup Firebase project
-    - [ ] Setup Firebase authentication
-    - [ ] Setup Firebase Firestore
-    - [ ] Create Users collection & populate with test data
-    - [ ] Create Tasks collection & populate with test data
-    - [ ] Create Shifts collection & populate with test data
+    - [x] Setup Firebase project
+    - [x] Setup Firebase authentication
+    - [x] Setup Firebase Firestore
+    - [x] Create Users collection & populate with test data
+    - [x] Create Tasks collection & populate with test data
+    - [x] Create Shifts collection & populate with test data
 
 #### Business Logic
     - [ ] Authentication
