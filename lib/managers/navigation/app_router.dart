@@ -14,6 +14,12 @@ part 'app_router.gr.dart';
       initial: true,
       fullMatch: true,
       usesPathAsKey: true,
+      page: SplashScreen,
+    ),
+    //
+    AutoRoute(
+      fullMatch: true,
+      usesPathAsKey: true,
       page: LoginScreen,
     ),
   ],

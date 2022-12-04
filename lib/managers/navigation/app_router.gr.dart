@@ -17,23 +17,47 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    SplashRoute.name: (routeData) {
+      return AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const SplashScreen()),
+      );
+    },
     LoginRoute.name: (routeData) {
       return AdaptivePage<dynamic>(
         routeData: routeData,
         child: WrappedRoute(child: const LoginScreen()),
       );
-    }
+    },
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
-          LoginRoute.name,
+          SplashRoute.name,
           path: '/',
           fullMatch: true,
           usesPathAsKey: true,
-        )
+        ),
+        RouteConfig(
+          LoginRoute.name,
+          path: '/login-screen',
+          fullMatch: true,
+          usesPathAsKey: true,
+        ),
       ];
+}
+
+/// generated route for
+/// [SplashScreen]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute()
+      : super(
+          SplashRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'SplashRoute';
 }
 
 /// generated route for
@@ -42,7 +66,7 @@ class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
-          path: '/',
+          path: '/login-screen',
         );
 
   static const String name = 'LoginRoute';
