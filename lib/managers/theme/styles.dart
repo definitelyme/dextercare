@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:dextercare/utils/utils.dart';
 
@@ -363,7 +364,7 @@ class AppTheme extends HiveObject {
       buttonTheme: _buttonThemeData,
       radioTheme: _radioThemeData,
       switchTheme: _switchThemeData,
-      textTheme: _textTheme,
+      textTheme: GoogleFonts.nunitoTextTheme(_textTheme),
     );
   }
 

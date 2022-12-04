@@ -1,3 +1,5 @@
+// ignore_for_file: cancel_subscriptions
+
 library auth_watcher_cubit.dart;
 
 import 'dart:async';
@@ -47,17 +49,22 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> with WatcherCubit {
 
   @override
   void subscribeToAuthChanges(Task actions) async {
-    // await signOut();
+    emit(state.copyWith(isLoading: true, user: facade.currentUser.getOrNull));
 
     await unsubscribeAuthChanges();
 
     _authStateChanges ??= facade.onAuthStateChanged.listen((option) {
+      actions(option);
       emit(state.copyWith(user: user, option: option, status: none()));
     });
+
+    toggleLoading(false);
   }
 
   @override
   void subscribeUserChanges([Task? actions]) async {
+    emit(state.copyWith(isLoading: true, user: facade.currentUser.getOrNull));
+
     await unsubscribeUserChanges();
 
     _userChanges = facade.onUserChanges.listen((option) {
@@ -67,6 +74,8 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> with WatcherCubit {
 
       actions?.call(option);
     });
+
+    toggleLoading(false);
   }
 
   @override

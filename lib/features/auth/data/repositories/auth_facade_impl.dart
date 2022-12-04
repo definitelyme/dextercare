@@ -20,10 +20,13 @@ class AuthFacadeImpl extends AuthFacade {
   const AuthFacadeImpl(this.firebaseAuth, this.googleSignIn);
 
   @override
-  Stream<Option<User>> get onAuthStateChanged => firebaseAuth.authStateChanges().map((user) => optionOf(user?.domain));
+  Option<User?> get currentUser => optionOf(firebaseAuth.currentUser?.domain);
 
   @override
-  Stream<Option<User>> get onUserChanges => firebaseAuth.userChanges().map((user) => optionOf(user?.domain));
+  Stream<Option<User?>> get onAuthStateChanged => firebaseAuth.authStateChanges().map((user) => optionOf(user?.domain));
+
+  @override
+  Stream<Option<User?>> get onUserChanges => firebaseAuth.userChanges().map((user) => optionOf(user?.domain));
 
   @override
   Future<Either<AuthResponse, Unit>> signInWithGoogle() async {

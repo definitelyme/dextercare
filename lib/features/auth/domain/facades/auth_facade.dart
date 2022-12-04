@@ -9,15 +9,17 @@ import 'package:google_sign_in/google_sign_in.dart';
 abstract class AuthFacade {
   const AuthFacade();
 
+  Option<User?> get currentUser;
+
   FirebaseAuth get firebaseAuth;
 
   GoogleSignIn get googleSignIn;
 
+  Stream<Option<User?>> get onAuthStateChanged;
+
+  Stream<Option<User?>> get onUserChanges;
+
   Future<Either<AuthResponse, Unit>> signInWithGoogle();
-
-  Stream<Option<User>> get onAuthStateChanged;
-
-  Stream<Option<User>> get onUserChanges;
 
   Future<void> signOut();
 }

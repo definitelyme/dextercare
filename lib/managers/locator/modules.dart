@@ -2,6 +2,7 @@ library modules.dart;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dextercare/firebase_options.dart';
+import 'package:dextercare/managers/navigation/guards/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -33,7 +34,7 @@ abstract class FirebaseModules {
 abstract class AppModules {
   /// Registers AppRouter as a singleton
   @singleton
-  AppRouter get router => AppRouter();
+  AppRouter get router => AppRouter(guestGuard: GuestGuard(), authGuard: AuthGuard());
 }
 
 @module

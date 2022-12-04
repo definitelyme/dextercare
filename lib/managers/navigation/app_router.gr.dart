@@ -13,20 +13,42 @@
 part of 'app_router.dart';
 
 class _$AppRouter extends RootStackRouter {
-  _$AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
+  _$AppRouter({
+    GlobalKey<NavigatorState>? navigatorKey,
+    required this.guestGuard,
+    required this.authGuard,
+  }) : super(navigatorKey);
+
+  final GuestGuard guestGuard;
+
+  final AuthGuard authGuard;
 
   @override
   final Map<String, PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
       return AdaptivePage<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: const SplashScreen()),
+        child: const SplashScreen(),
       );
     },
     LoginRoute.name: (routeData) {
       return AdaptivePage<dynamic>(
         routeData: routeData,
         child: WrappedRoute(child: const LoginScreen()),
+      );
+    },
+    CreateTodoRoute.name: (routeData) {
+      return AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const CreateTodoScreen()),
+        fullscreenDialog: true,
+      );
+    },
+    TodoListRoute.name: (routeData) {
+      return AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const TodoListScreen()),
+        fullscreenDialog: true,
       );
     },
   };
@@ -44,6 +66,21 @@ class _$AppRouter extends RootStackRouter {
           path: '/login-screen',
           fullMatch: true,
           usesPathAsKey: true,
+          guards: [guestGuard],
+        ),
+        RouteConfig(
+          CreateTodoRoute.name,
+          path: '/create-todo-screen',
+          fullMatch: true,
+          usesPathAsKey: true,
+          guards: [authGuard],
+        ),
+        RouteConfig(
+          TodoListRoute.name,
+          path: '/todo-list-screen',
+          fullMatch: true,
+          usesPathAsKey: true,
+          guards: [authGuard],
         ),
       ];
 }
@@ -70,4 +107,28 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+}
+
+/// generated route for
+/// [CreateTodoScreen]
+class CreateTodoRoute extends PageRouteInfo<void> {
+  const CreateTodoRoute()
+      : super(
+          CreateTodoRoute.name,
+          path: '/create-todo-screen',
+        );
+
+  static const String name = 'CreateTodoRoute';
+}
+
+/// generated route for
+/// [TodoListScreen]
+class TodoListRoute extends PageRouteInfo<void> {
+  const TodoListRoute()
+      : super(
+          TodoListRoute.name,
+          path: '/todo-list-screen',
+        );
+
+  static const String name = 'TodoListRoute';
 }

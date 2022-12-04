@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dextercare/core/domain/entities/entities.dart';
-import 'package:dextercare/core/domain/response/index.dart';
 import 'package:dextercare/features/auth/domain/entities/index.dart';
 
-typedef Task = void Function(Option<User> option);
+typedef Task = void Function(Option<User?> option);
 
 mixin WatcherCubit {
   Future<void> unsubscribeAuthChanges();
