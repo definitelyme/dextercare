@@ -6,8 +6,10 @@ import 'package:dextercare/core/data/index.dart';
 import 'package:dextercare/core/domain/entities/user/user.dart';
 import 'package:dextercare/core/domain/response/index.dart';
 import 'package:dextercare/features/auth/domain/index.dart';
+import 'package:dextercare/features/todo/data/models/index.dart';
 import 'package:dextercare/features/todo/domain/entities/firestore_response/firestore_response.dart';
 import 'package:injectable/injectable.dart';
+import 'package:dextercare/utils/utils.dart';
 
 @Injectable(as: UserFacade)
 class UserFacadeImpl extends UserFacade {
@@ -37,7 +39,7 @@ class UserFacadeImpl extends UserFacade {
   }
 
   @override
-  Future<User?> get(User user) async {
+  Future<User?> get(User user, {bool nested = true}) async {
     final _doc = await firestore.users.doc(user.id.value).get();
     final dto = UserDTO.fromJson(_doc.data() as Map<String, dynamic>);
     return dto.domain;
@@ -53,9 +55,27 @@ class UserFacadeImpl extends UserFacade {
   }
 
   @override
-  Future<User?> get currentUser async {
+  Future<User?> currentUser({bool nested = true}) async {
     final _doc = await firestore.users.user.get();
     final dto = UserDTO.fromJson(_doc.data() as Map<String, dynamic>);
-    return dto.domain;
+    var domain = dto.domain;
+
+    if (nested) {
+      final shifts = dto.shifts;
+      if (shifts != null) {
+        final docs = await Future.wait(shifts.map((e) => firestore.shifts.doc(e).get()));
+        final shiftDTOs = docs.map((e) => ShiftDTO.fromJson(e.data() as Map<String, dynamic>)).toList();
+        domain = dto.addShifts(shiftDTOs);
+      }
+
+      final todos = dto.todos;
+      if (todos != null) {
+        final docs = await Future.wait(todos.map((e) => firestore.todos.doc(e).get()));
+        final todoDTOs = docs.map((e) => TodoDTO.fromJson(e.data() as Map<String, dynamic>)).toList();
+        domain = dto.addTodos(todoDTOs);
+      }
+    }
+
+    return domain;
   }
 }

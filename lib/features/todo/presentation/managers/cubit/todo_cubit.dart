@@ -66,7 +66,7 @@ class TodoCubit extends Cubit<TodoState> with BaseCubit {
     await _todoSubscription?.cancel();
     _todoSubscription = null;
 
-    final user = await userFacade.currentUser;
+    final user = await userFacade.currentUser();
 
     if (user != null) {
       _todoSubscription ??= todoFacade.watchTodos(user, state.currentDate).listen((data) {
@@ -81,16 +81,16 @@ class TodoCubit extends Cubit<TodoState> with BaseCubit {
   void createTask() async {
     emit(state.copyWith(validate: true));
 
-    if (state.todo.failure.isNone()) {
+    if (state.todo.failure.isNone() && state.todo.shift.isValid) {
       emit(state.copyWith(isSaving: true, status: none()));
 
-      final user = await userFacade.currentUser;
+      final user = await userFacade.currentUser();
 
-      final todo = user != null
+      final _todo = user != null
           ? state.todo.copyWith(nurses: state.todo.nurses == null ? KtList.from([user]) : state.todo.nurses?.plusElementIfAbsent(user))
           : state.todo;
 
-      final result = await todoFacade.createOrUpdate(todo);
+      final result = await todoFacade.createOrUpdate(_todo);
 
       await result.fold(
         (f) async => emit(state.copyWith(status: optionOf(f as FirestoreResponse), isSaving: false)),

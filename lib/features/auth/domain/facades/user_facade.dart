@@ -11,9 +11,9 @@ abstract class UserFacade with BaseFacade {
 
   FirebaseFirestore get firestore;
 
-  Future<User?> get(User user);
+  Future<User?> get(User user, {bool nested = true});
 
-  Future<User?> get currentUser;
+  Future<User?> currentUser({bool nested = true});
 
   Stream<Either<Response, User>> get watch;
 

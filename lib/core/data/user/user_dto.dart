@@ -51,11 +51,7 @@ class UserDTO with _$UserDTO {
         deletedAt: deletedAt,
       );
 
-  User addShifts(Iterable<ShiftDTO> shifts) => domain.copyWith(
-        shifts: shifts.map((e) => e.domain).toImmutableList(),
-      );
+  User addShifts(Iterable<ShiftDTO> shifts) => domain.copyWith(shifts: shifts.map((e) => e.domain).toImmutableList());
 
-  User addTodos(Iterable<TodoDTO> todos) => domain.copyWith(
-        todos: todos.map((e) => e.domain).toImmutableList(),
-      );
+  User addTodos(Iterable<TodoDTO> todos) => domain.copyWith(todos: todos.map((e) => e.domain).toImmutableList());
 }
