@@ -88,17 +88,18 @@ UI Design gotten from Pinterest: [Design Link](https://www.pinterest.com/pin/369
 - [x] The todo-list should actually work. It should theoretically work for any user, not only the "hardcoded“ example user.
 
 ### Testing
-    - [ ] Unit Testing
-    - [ ] Integration Testing
+- [ ] Unit Testing
+- [ ] Integration Testing
 
 ### Documentation
-    - [x] Done
+- [x] Done
 
 ### Refactor & Clean up
-    - [x] Done
+- [x] Done
 
 
-## Pending
+## Pending & Unfinished Milestones
+
 Outlined below are pending milestones i couldn't finish in the specified time frame.
 
 - [ ] Add feature to Edit Task.
