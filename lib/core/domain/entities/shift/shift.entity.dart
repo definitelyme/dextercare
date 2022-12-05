@@ -24,6 +24,8 @@ class Shift extends BaseEntity with _$Shift {
 
   const Shift._();
 
+  bool get isValid => id.isValid && name.isValid;
+
   factory Shift.blank({
     String? id,
     String? name,

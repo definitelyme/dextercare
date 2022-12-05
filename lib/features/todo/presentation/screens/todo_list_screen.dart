@@ -304,86 +304,96 @@ class TodoListScreenState extends State<TodoListScreen> {
                                       Material(
                                         color: todos.get(i).color.getOrNull?.withOpacity(0.35),
                                         borderRadius: 12.br,
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: 0.04.w, vertical: 0.02.h).copyWith(top: 0, right: 0),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  AdaptiveText('${todos.get(i).shift.name}'),
-                                                  //
-                                                  CheckboxTheme(
-                                                    data: Theme.of(context).checkboxTheme.copyWith(
-                                                          checkColor: MaterialStateProperty.all(todos.get(i).color.getOrNull),
-                                                          fillColor: MaterialStateProperty.all(Colors.white70),
-                                                          shape: const CircleBorder(),
-                                                          splashRadius: 20,
-                                                        ),
-                                                    child: Checkbox(
-                                                      value: todos.get(i).isDone,
-                                                      onChanged: (_) => _cubit.markAsDone(todos.get(i)),
+                                        child: AdaptiveInkWell(
+                                          onTap: () {},
+                                          borderRadius: 12.br,
+                                          containedInkWell: true,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(horizontal: 0.04.w, vertical: 0.02.h).copyWith(top: 0, right: 0),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    AdaptiveText('${todos.get(i).shift.name}'),
+                                                    //
+                                                    CheckboxTheme(
+                                                      data: Theme.of(context).checkboxTheme.copyWith(
+                                                            checkColor:
+                                                                MaterialStateProperty.all(todos.get(i).color.getOrNull ?? Colors.white),
+                                                            fillColor: MaterialStateProperty.all(
+                                                              todos.get(i).color.getOrNull != null
+                                                                  ? todos.get(i).color.getOrNull?.invertLuminance
+                                                                  : Palette.primary,
+                                                            ),
+                                                            shape: const CircleBorder(),
+                                                            splashRadius: 20,
+                                                          ),
+                                                      child: Checkbox(
+                                                        value: todos.get(i).isDone,
+                                                        onChanged: (_) => _cubit.markAsDone(todos.get(i)),
+                                                      ),
                                                     ),
+                                                  ],
+                                                ),
+                                                //
+                                                0.01.vsh,
+                                                //
+                                                Padding(
+                                                  padding: EdgeInsets.only(right: 0.02.h),
+                                                  child: AdaptiveText(
+                                                    '${todos.get(i).title}',
+                                                    fontSize: 18.sp,
+                                                    height: 1.7,
+                                                    fontWeight: FontWeight.w600,
+                                                    textAlign: TextAlign.left,
                                                   ),
-                                                ],
-                                              ),
-                                              //
-                                              0.01.vsh,
-                                              //
-                                              Padding(
-                                                padding: EdgeInsets.only(right: 0.02.h),
-                                                child: AdaptiveText(
-                                                  '${todos.get(i).title}',
-                                                  fontSize: 18.sp,
-                                                  height: 1.7,
-                                                  fontWeight: FontWeight.w600,
-                                                  textAlign: TextAlign.left,
                                                 ),
-                                              ),
-                                              //
-                                              Padding(
-                                                padding: EdgeInsets.only(right: 0.02.h),
-                                                child: AdaptiveText(
-                                                  '${todos.get(i).description}',
-                                                  fontSize: 16.sp,
-                                                  fontWeight: FontWeight.normal,
-                                                  textAlign: TextAlign.left,
+                                                //
+                                                Padding(
+                                                  padding: EdgeInsets.only(right: 0.02.h),
+                                                  child: AdaptiveText(
+                                                    '${todos.get(i).description}',
+                                                    fontSize: 16.sp,
+                                                    fontWeight: FontWeight.normal,
+                                                    textAlign: TextAlign.left,
+                                                  ),
                                                 ),
-                                              ),
-                                              //
-                                              0.01.vsh,
-                                              //
-                                              Padding(
-                                                padding: EdgeInsets.only(right: 0.02.h),
-                                                child: Align(
-                                                  alignment: Alignment.centerRight,
-                                                  child: Material(
-                                                    borderRadius: 100.br,
-                                                    color: todos.get(i).status.bgColor,
-                                                    child: Padding(
-                                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                                      child: AdaptiveText(
-                                                        todos.get(i).status.formattedName,
-                                                        textColor: todos.get(i).color.getOrNull?.invertLuminance,
+                                                //
+                                                0.01.vsh,
+                                                //
+                                                Padding(
+                                                  padding: EdgeInsets.only(right: 0.02.h),
+                                                  child: Align(
+                                                    alignment: Alignment.centerRight,
+                                                    child: Material(
+                                                      borderRadius: 100.br,
+                                                      color: todos.get(i).status.bgColor,
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                                        child: AdaptiveText(
+                                                          todos.get(i).status.formattedName,
+                                                          textColor: todos.get(i).status.bgColor.invertLuminance,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
                                       //
-                                      if (!todos.isLastIndex(i)) 0.02.vsh,
+                                      0.02.vsh,
                                     ],
                                   ),
                                   childCount: todos.size,
                                 ),
                               ),
                             ),
-                          ),
+                          ).sliverSafeBottom,
                         ],
                       ),
                     ),
