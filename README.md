@@ -44,7 +44,7 @@ next shift (you can choose which alternative you want to implement).
     - [x] Setup project state management (provider, bloc, etc.)
 
 #### Design & UI
-    UI Design gotten from Pinterest: [https://www.pinterest.com/pin/369154500717175993/](https://www.pinterest.com/pin/369154500717175993/)
+UI Design gotten from Pinterest: [Design](https://www.pinterest.com/pin/369154500717175993/)
     - Design Screens:
         - [x] Mobile - Authentication Screen
         - [x] Mobile - Tasks List Screen
@@ -76,6 +76,7 @@ next shift (you can choose which alternative you want to implement).
 #### Expected Behaviour
     - [x] User can login
     - [x] The todo list should show all tasks for this specific nurse for the whole shift
+    - [x] Order tasks by date. When a date is selected, fetch tasks for that date.
     - [x] The nurse should be able to mark tasks as "done“
     - [-] The nurse should be able to create new tasks for their own shift or for other shifts
     - [x] If the nurse did not finish all tasks at the end of the shift, there should be a way to pass the task to the next shift:
@@ -98,9 +99,9 @@ next shift (you can choose which alternative you want to implement).
 Outlined below are pending milestones i couldn't finish in the specified time frame.
 
 - [ ] Add feature to Edit Task.
-- [ ] Fetch tasks by date
+- [x] Fetch tasks by date
 - [ ] Automatically pass task to next shift.
-- [ ] Nurses should be able to add tasks for future shifts.
+- [ ] Nurses should be able to add tasks for other/future shifts.
 - [ ] When a task is carried over to the next shift, nurses should see a list of "Pending Todos" for that shift.
     And they're required to select one from the list.
 - [ ] Fix issue when authenticating new & existing users.

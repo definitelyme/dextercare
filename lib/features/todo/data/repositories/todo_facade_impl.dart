@@ -45,13 +45,16 @@ class TodoFacadeImpl extends TodoFacade {
 
   @override
   Stream<Either<FirestoreResponse, KtList<Todo>>> watchTodos(User user, DateTime date) async* {
+    final _date = DateTime(date.year, date.month, date.day);
+    final _localTime = DateTime(localTime.year, localTime.month, localTime.day);
+
     yield* firestore.todos
         .where('nurses', arrayContains: user.id.value)
         .orderBy('created_at')
         .where(
           'created_at',
-          isGreaterThanOrEqualTo: date.day >= localTime.day ? DateTime(date.year, date.month, date.day) : null,
-          isLessThanOrEqualTo: date.day < localTime.day ? DateTime(date.year, date.month, date.day) : null,
+          isGreaterThanOrEqualTo: _date.isAfter(_localTime) || _date.isAtSameMomentAs(_localTime) ? _date : null,
+          isLessThanOrEqualTo: _date.isBefore(_localTime) ? _date : null,
         )
         .snapshots()
         .map(
