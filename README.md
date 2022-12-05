@@ -35,54 +35,54 @@ next shift (you can choose which alternative you want to implement).
 ## Breakdown of tasks & milestones
 
 #### Project Setup
-    - [x] Create Flutter project
-    - [x] Add project assets (images, icons, fonts, etc.)
-    - [x] Add project dependencies (packages)
-    - [x] Setup project design system & configuration (colors, fonts, styles, etc.)
-    - [x] Configure project structure using Clean Architecture (folders, files, etc.)
-    - [x] Setup project navigation (routes, navigation service, etc.)
-    - [x] Setup project state management (provider, bloc, etc.)
+- [x] Create Flutter project
+- [x] Add project assets (images, icons, fonts, etc.)
+- [x] Add project dependencies (packages)
+- [x] Setup project design system & configuration (colors, fonts, styles, etc.)
+- [x] Configure project structure using Clean Architecture (folders, files, etc.)
+- [x] Setup project navigation (routes, navigation service, etc.)
+- [x] Setup project state management (provider, bloc, etc.)
 
 #### Design & UI
 UI Design gotten from Pinterest: [Design](https://www.pinterest.com/pin/369154500717175993/)
-    - Design Screens:
-        - [x] Mobile - Authentication Screen
-        - [x] Mobile - Tasks List Screen
-        - [x] Mobile - Create Task Screen
-        - [ ] Mobile - Edit Invoice
-    - Design UI Components:
-        - [x] Button
-        - [x] Text Form Field
-        - [x] Dropdown
-        - [x] Checkbox
-        - [ ] Dialog
-        - [x] Card
+- Design Screens:
+- [x] Mobile - Authentication Screen
+- [x] Mobile - Tasks List Screen
+- [x] Mobile - Create Task Screen
+- [ ] Mobile - Edit Task Screen
+##### Design UI Components:
+- [x] Button
+- [x] Text Form Field
+- [x] Dropdown
+- [x] Checkbox
+- [ ] Dialog
+- [x] Card
 
 #### Database Setup & Structure
-    - [x] Setup Firebase project
-    - [x] Setup Firebase authentication
-    - [x] Setup Firebase Firestore
-    - [x] Create Users collection & populate with test data
-    - [x] Create Tasks collection & populate with test data
-    - [x] Create Shifts collection & populate with test data
+- [x] Setup Firebase project
+- [x] Setup Firebase authentication
+- [x] Setup Firebase Firestore
+- [x] Create Users collection & populate with test data
+- [x] Create Tasks collection & populate with test data
+- [x] Create Shifts collection & populate with test data
 
 #### Business Logic
-    - [x] Authentication
-    - [x] Get Tasks
-    - [x] Create Task
-    - [ ] Edit Task
-    - [x] Mark Task as Complete
+- [x] Authentication
+- [x] Get Tasks
+- [x] Create Task
+- [ ] Edit Task
+- [x] Mark Task as Complete
 
 #### Expected Behaviour
-    - [x] User can login
-    - [x] The todo list should show all tasks for this specific nurse for the whole shift
-    - [x] Order tasks by date. When a date is selected, fetch tasks for that date.
-    - [x] The nurse should be able to mark tasks as "done“
-    - [-] The nurse should be able to create new tasks for their own shift or for other shifts
-    - [x] If the nurse did not finish all tasks at the end of the shift, there should be a way to pass the task to the next shift:
-        - [x] manually by the nurse
-        - [ ] automatically by the system
-    - [x] The todo-list should actually work. It should theoretically work for any user, not only the "hardcoded“ example user.
+- [x] User can login
+- [x] The todo list should show all tasks for this specific nurse for the whole shift
+- [x] Order tasks by date. When a date is selected, fetch tasks for that date.
+- [x] The nurse should be able to mark tasks as "done“
+- [-] The nurse should be able to create new tasks for their own shift or for other shifts
+- [x] If the nurse did not finish all tasks at the end of the shift, there should be a way to pass the task to the next shift:
+    - [x] manually by the nurse
+    - [ ] automatically by the system
+- [x] The todo-list should actually work. It should theoretically work for any user, not only the "hardcoded“ example user.
 
 #### Testing
     - [ ] Unit Testing
