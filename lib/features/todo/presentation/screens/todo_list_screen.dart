@@ -360,7 +360,7 @@ class TodoListScreenState extends State<TodoListScreen> {
                                                   alignment: Alignment.centerRight,
                                                   child: Material(
                                                     borderRadius: 100.br,
-                                                    color: todos.get(i).color.getOrNull,
+                                                    color: todos.get(i).status.bgColor,
                                                     child: Padding(
                                                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                                       child: AdaptiveText(

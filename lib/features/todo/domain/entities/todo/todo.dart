@@ -41,7 +41,7 @@ enum TodoStatus {
       case TodoStatus.upcoming:
         return Colors.green;
       case TodoStatus.completed:
-        return Colors.grey;
+        return Palette.primaryColor;
     }
   }
 }

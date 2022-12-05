@@ -273,6 +273,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                               items: s.shifts.asList(),
                               groupValue: s.shifts.firstOrNull((e) => s.todo.shift.id == e.id),
                               text: (it) => it?.name.getOrNull,
+                              itemFontSize: 15.sp,
                               onChanged: _cubit.shiftChanged,
                             ),
                           ),
