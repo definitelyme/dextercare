@@ -1,4 +1,19 @@
-enum ResponseType { success, failure }
+enum ResponseType {
+  success,
+  failure;
+
+  T when<T>({
+    required T Function() success,
+    required T Function() error,
+  }) {
+    switch (this) {
+      case ResponseType.success:
+        return success();
+      case ResponseType.failure:
+        return error();
+    }
+  }
+}
 
 mixin BaseException implements Exception {
   String get message;

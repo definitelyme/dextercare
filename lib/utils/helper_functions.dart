@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -157,6 +158,71 @@ class Utils {
       return cupertino;
     else
       return material;
+  }
+
+  static Future<void> report(
+    Object exception,
+    StackTrace stack, {
+    bool printDetails = true,
+    String? reason,
+    bool fatal = false,
+  }) async {
+    try {
+      final crashlytics = getIt<FirebaseCrashlytics>();
+
+      if (crashlytics.isCrashlyticsCollectionEnabled) {
+        final msg = reason ?? (fatal ? 'Fatal Error (Possibly caught in the nearest zone)' : 'Non-fatal Try/Catch Exception');
+        await crashlytics.recordError(exception, stack, printDetails: printDetails, reason: msg, fatal: fatal, information: [
+          DiagnosticsNode.message('Crash Report'),
+          DiagnosticsProperty<Object>('Exception', exception, style: DiagnosticsTreeStyle.errorProperty),
+          DiagnosticsProperty<StackTrace>('Stack Trace', stack, style: DiagnosticsTreeStyle.errorProperty),
+          DiagnosticsStackTrace(msg, stack),
+        ]);
+      } else {
+        debugPrint(exception.toString());
+        debugPrintStack(stackTrace: stack);
+      }
+    } catch (e, tr) {
+      debugPrint(e.toString());
+      debugPrintStack(stackTrace: tr);
+      throw exception;
+    }
+  }
+
+  static Future<void> reportFlutterError(
+    Object exception,
+    StackTrace? stack, {
+    String reason = 'Non-fatal Try/Catch Exception',
+  }) async {
+    try {
+      final crashlytics = getIt<FirebaseCrashlytics>();
+
+      if (crashlytics.isCrashlyticsCollectionEnabled) {
+        final details = FlutterErrorDetails(
+          exception: exception,
+          stack: stack,
+          library: 'Flutter',
+          context: ErrorDescription(reason),
+          informationCollector: () sync* {
+            yield* [
+              DiagnosticsNode.message('Flutter Error Report'),
+              DiagnosticsProperty<Object>('Exception', exception, style: DiagnosticsTreeStyle.errorProperty),
+              DiagnosticsProperty<StackTrace>('Stack Trace', stack, style: DiagnosticsTreeStyle.errorProperty),
+              DiagnosticsStackTrace(reason, stack),
+            ];
+          },
+        );
+
+        await crashlytics.recordFlutterError(details);
+      } else {
+        debugPrint(exception.toString());
+        debugPrintStack(stackTrace: stack);
+      }
+    } catch (e, tr) {
+      debugPrint(e.toString());
+      debugPrintStack(stackTrace: tr);
+      throw exception;
+    }
   }
 
   static Color? resolveColor(

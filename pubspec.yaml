@@ -13,6 +13,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  another_flushbar: ^1.12.29
+
   auto_route: ^5.0.4
 
   cloud_firestore: ^4.1.0

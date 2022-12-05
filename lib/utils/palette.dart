@@ -123,6 +123,9 @@ mixin Palette {
 
   static const Color disabledColorLight = Color(0xffe2e6f9);
   static const Color disabledColorDark = Color(0xff6e6e6e);
+
+  static const Color successGreen = Color(0xFF4bb543);
+  static const Color infoBlue = Color(0xff42a5f5);
   // static const Color disabledColorDark = Color(0xff707484);
   // static Color disabledColorDark = const Color(0xffe1e6f9) + Palette.backgroundColorDark;
 

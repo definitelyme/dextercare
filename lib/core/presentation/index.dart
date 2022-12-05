@@ -20,3 +20,4 @@ export 'widgets/widget_focus.dart';
 export 'widgets/adaptive/adaptive_list_tile.dart';
 export 'widgets/adaptive/alertdialog/adaptive_alertdialog.dart';
 export 'widgets/adaptive/alertdialog/reactive_adaptive_alertdialog.dart';
+export 'widgets/dialogs/popup_dialog.dart';
