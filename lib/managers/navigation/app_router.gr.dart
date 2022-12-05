@@ -48,7 +48,6 @@ class _$AppRouter extends RootStackRouter {
       return AdaptivePage<dynamic>(
         routeData: routeData,
         child: WrappedRoute(child: const TodoListScreen()),
-        fullscreenDialog: true,
       );
     },
   };

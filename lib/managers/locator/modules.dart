@@ -11,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:dextercare/managers/navigation/navigation.dart';
 
+/// Register all firebase services
 @module
 abstract class FirebaseModules {
   @lazySingleton
@@ -40,5 +41,7 @@ abstract class AppModules {
 @module
 abstract class ServiceModules {
   @lazySingleton
-  GoogleSignIn get googleSignIn => GoogleSignIn();
+  GoogleSignIn get googleSignIn => GoogleSignIn(
+      // clientId: '666486309718-0oigjj1cnahdhjm1te9vo3ibecamlacd.apps.googleusercontent.com',
+      );
 }

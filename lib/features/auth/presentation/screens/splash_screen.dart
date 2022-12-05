@@ -1,6 +1,5 @@
 library splash_screen.dart;
 
-import 'package:auto_route/auto_route.dart';
 import 'package:dextercare/core/presentation/index.dart';
 import 'package:dextercare/features/auth/presentation/index.dart';
 import 'package:dextercare/managers/navigation/app_router.dart';
@@ -15,28 +14,24 @@ class SplashScreen extends StatefulWidget {
 
   @override
   SplashScreenState createState() => SplashScreenState();
-}
 
-class SplashScreenState extends State<SplashScreen> {
-  late AuthWatcherCubit _watcherCubit;
-
-  @override
-  void initState() {
-    _watcherCubit = context.read<AuthWatcherCubit>();
+  static void subscribeToAuthChanges() {
     Future.delayed(const Duration(milliseconds: 1500), () {
-      _watcherCubit.subscribeToAuthChanges((option) {
-        option.fold(
-          () => WidgetsBinding.instance.addPostFrameCallback((_) {
-            navigator.navigate(const LoginRoute());
-          }),
-          (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
-            navigator.navigate(const TodoListRoute());
-          }),
+      navigator.navigatorKey.currentContext?.read<AuthWatcherCubit>().subscribeToAuthChanges((option) async {
+        await option.fold(
+          () async => navigator.pushAndPopUntil(const LoginRoute(), predicate: (r) => false),
+          (_) async => navigator.pushAndPopUntil(const TodoListRoute(), predicate: (r) => false),
         );
       });
     });
+  }
+}
 
+class SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
     super.initState();
+    SplashScreen.subscribeToAuthChanges();
   }
 
   @override

@@ -1,7 +1,9 @@
 library todo_list_screen.dart;
 
 import 'package:auto_route/auto_route.dart';
+import 'package:dextercare/features/auth/presentation/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// A stateful widget that renders TodoListScreen.
 class TodoListScreen extends StatefulWidget with AutoRouteWrapper {
@@ -19,9 +21,12 @@ class TodoListScreen extends StatefulWidget with AutoRouteWrapper {
 class TodoListScreenState extends State<TodoListScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Screen Template for TodoListScreen'),
+        child: GestureDetector(
+          onTap: () => context.read<AuthWatcherCubit>().signOut(),
+          child: Text('Screen Template for TodoListScreen'),
+        ),
       ),
     );
   }

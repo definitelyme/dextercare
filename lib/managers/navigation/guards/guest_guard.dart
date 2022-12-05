@@ -13,7 +13,6 @@ class GuestGuard extends RootContextGuard {
     final isAuthenticated = context.read<AuthWatcherCubit>().isAuthenticated;
 
     if (isAuthenticated) {
-      resolver.next(false);
       router.replaceAll([const TodoListRoute()]);
     } else {
       resolver.next(true);

@@ -37,7 +37,6 @@ part 'app_router.gr.dart';
     AutoRoute(
       fullMatch: true,
       usesPathAsKey: true,
-      fullscreenDialog: true,
       guards: [AuthGuard],
       page: TodoListScreen,
     ),

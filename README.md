@@ -46,7 +46,7 @@ next shift (you can choose which alternative you want to implement).
 #### Design & UI
     UI Design gotten from Pinterest: [https://www.pinterest.com/pin/369154500717175993/](https://www.pinterest.com/pin/369154500717175993/)
     - Design Screens:
-        - [ ] Mobile - Authentication Screen
+        - [x] Mobile - Authentication Screen
         - [ ] Mobile - Tasks List Screen
         - [ ] Mobile - Create Task Screen
         - [ ] Mobile - Edit Invoice
@@ -67,14 +67,14 @@ next shift (you can choose which alternative you want to implement).
     - [x] Create Shifts collection & populate with test data
 
 #### Business Logic
-    - [ ] Authentication
+    - [x] Authentication
     - [ ] Get Tasks
     - [ ] Create Task
     - [ ] Edit Task
     - [ ] Mark Task as Complete
 
 #### Expected Behaviour
-    - [ ] User can login
+    - [x] User can login
     - [ ] The todo list should show all tasks for this specific nurse for the whole shift
     - [ ] The nurse should be able to mark tasks as "done“
     - [ ] The nurse should be able to create new tasks for their own shift or for other shifts

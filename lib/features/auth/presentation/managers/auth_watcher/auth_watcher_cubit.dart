@@ -51,11 +51,11 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> with WatcherCubit {
   void subscribeToAuthChanges(Task actions) async {
     emit(state.copyWith(isLoading: true, user: facade.currentUser.getOrNull));
 
-    await unsubscribeAuthChanges();
+    await _authStateChanges?.cancel();
 
     _authStateChanges ??= facade.onAuthStateChanged.listen((option) {
-      actions(option);
       emit(state.copyWith(user: user, option: option, status: none()));
+      actions(option);
     });
 
     toggleLoading(false);

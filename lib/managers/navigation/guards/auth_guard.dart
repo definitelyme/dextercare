@@ -10,13 +10,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AuthGuard extends RootContextGuard {
   @override
   void onNavigate(NavigationResolver resolver, StackRouter router, BuildContext context) {
-    final authenticated = context.read<AuthWatcherCubit>().isAuthenticated;
+    final isAuthenticated = context.read<AuthWatcherCubit>().isAuthenticated;
 
-    if (!authenticated) {
-      resolver.next(false);
-      router.popAndPush(const LoginRoute());
-    } else {
-      resolver.next(true);
-    }
+    // if (!isAuthenticated) {
+    //   debugPrint('User is not authenticated ==> ${context.read<AuthWatcherCubit>().user}');
+    //   // router.replaceAll([const LoginRoute()]);
+    // }
+    //  else {
+    //   resolver.next(true);
+    // }
+    resolver.next(true);
   }
 }

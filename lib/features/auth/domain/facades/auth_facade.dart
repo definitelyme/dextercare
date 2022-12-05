@@ -19,7 +19,7 @@ abstract class AuthFacade {
 
   Stream<Option<User?>> get onUserChanges;
 
-  Future<Either<AuthResponse, Unit>> signInWithGoogle();
+  Future<Either<AuthResponse, User>> signInWithGoogle();
 
   Future<void> signOut();
 }

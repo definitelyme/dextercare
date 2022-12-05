@@ -5,6 +5,8 @@ import 'package:dextercare/core/domain/entities/entities.dart';
 import 'package:dextercare/features/auth/domain/entities/index.dart';
 import 'package:dextercare/features/auth/domain/index.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dextercare/features/auth/data/repositories/firebase_auth_user_extension.dart';
@@ -29,7 +31,7 @@ class AuthFacadeImpl extends AuthFacade {
   Stream<Option<User?>> get onUserChanges => firebaseAuth.userChanges().map((user) => optionOf(user?.domain));
 
   @override
-  Future<Either<AuthResponse, Unit>> signInWithGoogle() async {
+  Future<Either<AuthResponse, User>> signInWithGoogle() async {
     try {
       // Attempt authenticating user with google credentials
       final account = await googleSignIn.signIn();
@@ -48,17 +50,19 @@ class AuthFacadeImpl extends AuthFacade {
       // SignIn to firebase using user's google account credentials
       final credentials = await firebaseAuth.signInWithCredential(authCredential);
 
-      return right(unit);
+      return right(credentials.user!.domain);
     } on AuthResponse catch (e) {
       return left(e);
     } on FirebaseAuthException catch (e) {
       return _handleAuthException(e);
+    } on PlatformException catch (e) {
+      return left(AuthResponse.failure(message: '${e.message}', code: e.code));
     } catch (e) {
       return left(AuthResponse.failure(message: '$e'));
     }
   }
 
-  Future<Either<AuthResponse, Unit>> _handleAuthException(FirebaseAuthException e) async {
+  Future<Either<AuthResponse, T>> _handleAuthException<T>(FirebaseAuthException e) async {
     switch (e.code) {
       case 'account-exists-with-different-credential':
         return left(AuthResponse.accountExistsWithDifferentCredential());

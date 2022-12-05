@@ -34,7 +34,18 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       body: Center(
-        child: Text('Screen Template for LoginScreen'),
+        child: BlocSelector<AuthCubit, AuthState, bool>(
+          selector: (s) => s.isGoogleAuthLoading,
+          builder: (c, isLoading) => Padding(
+            padding: EdgeInsets.symmetric(horizontal: sidePadding),
+            child: AdaptiveButton(
+              onPressed: context.read<AuthCubit>().signInWithGoogle,
+              loadingData: (d) => d.copyWith(isLoading: isLoading),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              text: 'Continue with Google',
+            ),
+          ),
+        ),
       ),
     );
   }
