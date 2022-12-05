@@ -29,7 +29,9 @@ class SplashScreenState extends State<SplashScreen> {
           () => WidgetsBinding.instance.addPostFrameCallback((_) {
             navigator.navigate(const LoginRoute());
           }),
-          (_) => null,
+          (_) => WidgetsBinding.instance.addPostFrameCallback((_) {
+            navigator.navigate(const TodoListRoute());
+          }),
         );
       });
     });
