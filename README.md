@@ -105,7 +105,7 @@ Outlined below are pending milestones i couldn't finish in the specified time fr
 - [ ] Add feature to Edit Task.
 - [x] Fetch tasks by date
 - [ ] Automatically pass task to next shift.
-- [ ] Nurses should be able to add tasks for other/future shifts.
+- [ ] Nurses should be able to add tasks for past/future shifts.
 - [ ] When a task is carried over to the next shift, nurses should see a list of "Pending Todos" for that shift.
     And they're required to select one from the list.
 - [ ] Fix issue when authenticating new & existing users.
