@@ -38,9 +38,14 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     CreateTodoRoute.name: (routeData) {
+      final args = routeData.argsAs<CreateTodoRouteArgs>();
       return AdaptivePage<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: const CreateTodoScreen()),
+        child: WrappedRoute(
+            child: CreateTodoScreen(
+          key: args.key,
+          days: args.days,
+        )),
         fullscreenDialog: true,
       );
     },
@@ -110,14 +115,36 @@ class LoginRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CreateTodoScreen]
-class CreateTodoRoute extends PageRouteInfo<void> {
-  const CreateTodoRoute()
-      : super(
+class CreateTodoRoute extends PageRouteInfo<CreateTodoRouteArgs> {
+  CreateTodoRoute({
+    Key? key,
+    required List<DateTime> days,
+  }) : super(
           CreateTodoRoute.name,
           path: '/create-todo-screen',
+          args: CreateTodoRouteArgs(
+            key: key,
+            days: days,
+          ),
         );
 
   static const String name = 'CreateTodoRoute';
+}
+
+class CreateTodoRouteArgs {
+  const CreateTodoRouteArgs({
+    this.key,
+    required this.days,
+  });
+
+  final Key? key;
+
+  final List<DateTime> days;
+
+  @override
+  String toString() {
+    return 'CreateTodoRouteArgs{key: $key, days: $days}';
+  }
 }
 
 /// generated route for

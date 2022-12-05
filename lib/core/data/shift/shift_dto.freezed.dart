@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of shift.entity.dart;
+part of shift_dto.dart;
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,43 +14,56 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ShiftDTO _$ShiftDTOFromJson(Map<String, dynamic> json) {
+  return _ShiftDTO.fromJson(json);
+}
+
 /// @nodoc
-mixin _$Shift {
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
-  BasicTextField get name => throw _privateConstructorUsedError;
-  BasicTextField get startTime => throw _privateConstructorUsedError;
-  BasicTextField get endTime => throw _privateConstructorUsedError;
-  KtList<User>? get nurses => throw _privateConstructorUsedError;
-  KtList<Todo>? get todos => throw _privateConstructorUsedError;
+mixin _$ShiftDTO {
+  @StringSerializer()
+  String? get id => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get name => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get startTime => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get endTime => throw _privateConstructorUsedError;
+  Iterable<String>? get nurses => throw _privateConstructorUsedError;
+  Iterable<String>? get todos => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get deletedAt => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ShiftCopyWith<Shift> get copyWith => throw _privateConstructorUsedError;
+  $ShiftDTOCopyWith<ShiftDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ShiftCopyWith<$Res> {
-  factory $ShiftCopyWith(Shift value, $Res Function(Shift) then) =
-      _$ShiftCopyWithImpl<$Res, Shift>;
+abstract class $ShiftDTOCopyWith<$Res> {
+  factory $ShiftDTOCopyWith(ShiftDTO value, $Res Function(ShiftDTO) then) =
+      _$ShiftDTOCopyWithImpl<$Res, ShiftDTO>;
   @useResult
   $Res call(
-      {UniqueId<String?> id,
-      BasicTextField name,
-      BasicTextField startTime,
-      BasicTextField endTime,
-      KtList<User>? nurses,
-      KtList<Todo>? todos,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      DateTime? deletedAt});
+      {@StringSerializer() String? id,
+      @StringSerializer() String? name,
+      @StringSerializer() String? startTime,
+      @StringSerializer() String? endTime,
+      Iterable<String>? nurses,
+      Iterable<String>? todos,
+      @TimestampConverter() DateTime? createdAt,
+      @TimestampConverter() DateTime? updatedAt,
+      @TimestampConverter() DateTime? deletedAt});
 }
 
 /// @nodoc
-class _$ShiftCopyWithImpl<$Res, $Val extends Shift>
-    implements $ShiftCopyWith<$Res> {
-  _$ShiftCopyWithImpl(this._value, this._then);
+class _$ShiftDTOCopyWithImpl<$Res, $Val extends ShiftDTO>
+    implements $ShiftDTOCopyWith<$Res> {
+  _$ShiftDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -60,10 +73,10 @@ class _$ShiftCopyWithImpl<$Res, $Val extends Shift>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
     Object? nurses = freezed,
     Object? todos = freezed,
     Object? createdAt = freezed,
@@ -71,30 +84,30 @@ class _$ShiftCopyWithImpl<$Res, $Val extends Shift>
     Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId<String?>,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
-      startTime: null == startTime
+              as String?,
+      startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
-      endTime: null == endTime
+              as String?,
+      endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
+              as String?,
       nurses: freezed == nurses
           ? _value.nurses
           : nurses // ignore: cast_nullable_to_non_nullable
-              as KtList<User>?,
+              as Iterable<String>?,
       todos: freezed == todos
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
-              as KtList<Todo>?,
+              as Iterable<String>?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -112,67 +125,70 @@ class _$ShiftCopyWithImpl<$Res, $Val extends Shift>
 }
 
 /// @nodoc
-abstract class _$$_ShiftCopyWith<$Res> implements $ShiftCopyWith<$Res> {
-  factory _$$_ShiftCopyWith(_$_Shift value, $Res Function(_$_Shift) then) =
-      __$$_ShiftCopyWithImpl<$Res>;
+abstract class _$$_ShiftDTOCopyWith<$Res> implements $ShiftDTOCopyWith<$Res> {
+  factory _$$_ShiftDTOCopyWith(
+          _$_ShiftDTO value, $Res Function(_$_ShiftDTO) then) =
+      __$$_ShiftDTOCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {UniqueId<String?> id,
-      BasicTextField name,
-      BasicTextField startTime,
-      BasicTextField endTime,
-      KtList<User>? nurses,
-      KtList<Todo>? todos,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      DateTime? deletedAt});
+      {@StringSerializer() String? id,
+      @StringSerializer() String? name,
+      @StringSerializer() String? startTime,
+      @StringSerializer() String? endTime,
+      Iterable<String>? nurses,
+      Iterable<String>? todos,
+      @TimestampConverter() DateTime? createdAt,
+      @TimestampConverter() DateTime? updatedAt,
+      @TimestampConverter() DateTime? deletedAt});
 }
 
 /// @nodoc
-class __$$_ShiftCopyWithImpl<$Res> extends _$ShiftCopyWithImpl<$Res, _$_Shift>
-    implements _$$_ShiftCopyWith<$Res> {
-  __$$_ShiftCopyWithImpl(_$_Shift _value, $Res Function(_$_Shift) _then)
+class __$$_ShiftDTOCopyWithImpl<$Res>
+    extends _$ShiftDTOCopyWithImpl<$Res, _$_ShiftDTO>
+    implements _$$_ShiftDTOCopyWith<$Res> {
+  __$$_ShiftDTOCopyWithImpl(
+      _$_ShiftDTO _value, $Res Function(_$_ShiftDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? startTime = null,
-    Object? endTime = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
     Object? nurses = freezed,
     Object? todos = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? deletedAt = freezed,
   }) {
-    return _then(_$_Shift(
-      id: null == id
+    return _then(_$_ShiftDTO(
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId<String?>,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
-      startTime: null == startTime
+              as String?,
+      startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
-      endTime: null == endTime
+              as String?,
+      endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
+              as String?,
       nurses: freezed == nurses
           ? _value.nurses
           : nurses // ignore: cast_nullable_to_non_nullable
-              as KtList<User>?,
+              as Iterable<String>?,
       todos: freezed == todos
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
-              as KtList<Todo>?,
+              as Iterable<String>?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -190,49 +206,59 @@ class __$$_ShiftCopyWithImpl<$Res> extends _$ShiftCopyWithImpl<$Res, _$_Shift>
 }
 
 /// @nodoc
-
-class _$_Shift extends _Shift with DiagnosticableTreeMixin {
-  const _$_Shift(
-      {required this.id,
-      required this.name,
-      required this.startTime,
-      required this.endTime,
+@JsonSerializable()
+class _$_ShiftDTO extends _ShiftDTO with DiagnosticableTreeMixin {
+  const _$_ShiftDTO(
+      {@StringSerializer() this.id,
+      @StringSerializer() this.name,
+      @StringSerializer() this.startTime,
+      @StringSerializer() this.endTime,
       this.nurses,
       this.todos,
-      this.createdAt,
-      this.updatedAt,
-      this.deletedAt})
+      @TimestampConverter() this.createdAt,
+      @TimestampConverter() this.updatedAt,
+      @TimestampConverter() this.deletedAt})
       : super._();
 
+  factory _$_ShiftDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_ShiftDTOFromJson(json);
+
   @override
-  final UniqueId<String?> id;
+  @StringSerializer()
+  final String? id;
   @override
-  final BasicTextField name;
+  @StringSerializer()
+  final String? name;
   @override
-  final BasicTextField startTime;
+  @StringSerializer()
+  final String? startTime;
   @override
-  final BasicTextField endTime;
+  @StringSerializer()
+  final String? endTime;
   @override
-  final KtList<User>? nurses;
+  final Iterable<String>? nurses;
   @override
-  final KtList<Todo>? todos;
+  final Iterable<String>? todos;
   @override
+  @TimestampConverter()
   final DateTime? createdAt;
   @override
+  @TimestampConverter()
   final DateTime? updatedAt;
   @override
+  @TimestampConverter()
   final DateTime? deletedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Shift(id: $id, name: $name, startTime: $startTime, endTime: $endTime, nurses: $nurses, todos: $todos, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'ShiftDTO(id: $id, name: $name, startTime: $startTime, endTime: $endTime, nurses: $nurses, todos: $todos, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Shift'))
+      ..add(DiagnosticsProperty('type', 'ShiftDTO'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('startTime', startTime))
@@ -248,14 +274,14 @@ class _$_Shift extends _Shift with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Shift &&
+            other is _$_ShiftDTO &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime) &&
-            (identical(other.nurses, nurses) || other.nurses == nurses) &&
-            (identical(other.todos, todos) || other.todos == todos) &&
+            const DeepCollectionEquality().equals(other.nurses, nurses) &&
+            const DeepCollectionEquality().equals(other.todos, todos) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -264,50 +290,76 @@ class _$_Shift extends _Shift with DiagnosticableTreeMixin {
                 other.deletedAt == deletedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, startTime, endTime,
-      nurses, todos, createdAt, updatedAt, deletedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      startTime,
+      endTime,
+      const DeepCollectionEquality().hash(nurses),
+      const DeepCollectionEquality().hash(todos),
+      createdAt,
+      updatedAt,
+      deletedAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShiftCopyWith<_$_Shift> get copyWith =>
-      __$$_ShiftCopyWithImpl<_$_Shift>(this, _$identity);
+  _$$_ShiftDTOCopyWith<_$_ShiftDTO> get copyWith =>
+      __$$_ShiftDTOCopyWithImpl<_$_ShiftDTO>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ShiftDTOToJson(
+      this,
+    );
+  }
 }
 
-abstract class _Shift extends Shift {
-  const factory _Shift(
-      {required final UniqueId<String?> id,
-      required final BasicTextField name,
-      required final BasicTextField startTime,
-      required final BasicTextField endTime,
-      final KtList<User>? nurses,
-      final KtList<Todo>? todos,
-      final DateTime? createdAt,
-      final DateTime? updatedAt,
-      final DateTime? deletedAt}) = _$_Shift;
-  const _Shift._() : super._();
+abstract class _ShiftDTO extends ShiftDTO {
+  const factory _ShiftDTO(
+      {@StringSerializer() final String? id,
+      @StringSerializer() final String? name,
+      @StringSerializer() final String? startTime,
+      @StringSerializer() final String? endTime,
+      final Iterable<String>? nurses,
+      final Iterable<String>? todos,
+      @TimestampConverter() final DateTime? createdAt,
+      @TimestampConverter() final DateTime? updatedAt,
+      @TimestampConverter() final DateTime? deletedAt}) = _$_ShiftDTO;
+  const _ShiftDTO._() : super._();
+
+  factory _ShiftDTO.fromJson(Map<String, dynamic> json) = _$_ShiftDTO.fromJson;
 
   @override
-  UniqueId<String?> get id;
+  @StringSerializer()
+  String? get id;
   @override
-  BasicTextField get name;
+  @StringSerializer()
+  String? get name;
   @override
-  BasicTextField get startTime;
+  @StringSerializer()
+  String? get startTime;
   @override
-  BasicTextField get endTime;
+  @StringSerializer()
+  String? get endTime;
   @override
-  KtList<User>? get nurses;
+  Iterable<String>? get nurses;
   @override
-  KtList<Todo>? get todos;
+  Iterable<String>? get todos;
   @override
+  @TimestampConverter()
   DateTime? get createdAt;
   @override
+  @TimestampConverter()
   DateTime? get updatedAt;
   @override
+  @TimestampConverter()
   DateTime? get deletedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_ShiftCopyWith<_$_Shift> get copyWith =>
+  _$$_ShiftDTOCopyWith<_$_ShiftDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of todo.dart;
+part of todo_dto.dart;
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,49 +14,63 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+TodoDTO _$TodoDTOFromJson(Map<String, dynamic> json) {
+  return _TodoDTO.fromJson(json);
+}
+
 /// @nodoc
-mixin _$Todo {
-  UniqueId<String?> get id => throw _privateConstructorUsedError;
-  BasicTextField get title => throw _privateConstructorUsedError;
-  BasicTextField get description => throw _privateConstructorUsedError;
-  bool get assignToNextShift => throw _privateConstructorUsedError;
-  KtList<User>? get nurses => throw _privateConstructorUsedError;
-  Shift get shift => throw _privateConstructorUsedError;
-  ColorField get color => throw _privateConstructorUsedError;
+mixin _$TodoDTO {
+  @StringSerializer()
+  String? get id => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get title => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get description => throw _privateConstructorUsedError;
+  @BooleanSerializer()
+  bool? get assignToNextShift => throw _privateConstructorUsedError;
+  Iterable<String>? get nurses => throw _privateConstructorUsedError;
+  ShiftDTO? get shift => throw _privateConstructorUsedError;
+  @StringSerializer()
+  String? get color => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get completedAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get deletedAt => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TodoCopyWith<Todo> get copyWith => throw _privateConstructorUsedError;
+  $TodoDTOCopyWith<TodoDTO> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TodoCopyWith<$Res> {
-  factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
-      _$TodoCopyWithImpl<$Res, Todo>;
+abstract class $TodoDTOCopyWith<$Res> {
+  factory $TodoDTOCopyWith(TodoDTO value, $Res Function(TodoDTO) then) =
+      _$TodoDTOCopyWithImpl<$Res, TodoDTO>;
   @useResult
   $Res call(
-      {UniqueId<String?> id,
-      BasicTextField title,
-      BasicTextField description,
-      bool assignToNextShift,
-      KtList<User>? nurses,
-      Shift shift,
-      ColorField color,
-      DateTime? completedAt,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      DateTime? deletedAt});
+      {@StringSerializer() String? id,
+      @StringSerializer() String? title,
+      @StringSerializer() String? description,
+      @BooleanSerializer() bool? assignToNextShift,
+      Iterable<String>? nurses,
+      ShiftDTO? shift,
+      @StringSerializer() String? color,
+      @TimestampConverter() DateTime? completedAt,
+      @TimestampConverter() DateTime? createdAt,
+      @TimestampConverter() DateTime? updatedAt,
+      @TimestampConverter() DateTime? deletedAt});
 
-  $ShiftCopyWith<$Res> get shift;
+  $ShiftDTOCopyWith<$Res>? get shift;
 }
 
 /// @nodoc
-class _$TodoCopyWithImpl<$Res, $Val extends Todo>
-    implements $TodoCopyWith<$Res> {
-  _$TodoCopyWithImpl(this._value, this._then);
+class _$TodoDTOCopyWithImpl<$Res, $Val extends TodoDTO>
+    implements $TodoDTOCopyWith<$Res> {
+  _$TodoDTOCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -66,47 +80,47 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? description = null,
-    Object? assignToNextShift = null,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? assignToNextShift = freezed,
     Object? nurses = freezed,
-    Object? shift = null,
-    Object? color = null,
+    Object? shift = freezed,
+    Object? color = freezed,
     Object? completedAt = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId<String?>,
-      title: null == title
+              as String?,
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
-      assignToNextShift: null == assignToNextShift
+              as String?,
+      assignToNextShift: freezed == assignToNextShift
           ? _value.assignToNextShift
           : assignToNextShift // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       nurses: freezed == nurses
           ? _value.nurses
           : nurses // ignore: cast_nullable_to_non_nullable
-              as KtList<User>?,
-      shift: null == shift
+              as Iterable<String>?,
+      shift: freezed == shift
           ? _value.shift
           : shift // ignore: cast_nullable_to_non_nullable
-              as Shift,
-      color: null == color
+              as ShiftDTO?,
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as ColorField,
+              as String?,
       completedAt: freezed == completedAt
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
@@ -128,86 +142,92 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
 
   @override
   @pragma('vm:prefer-inline')
-  $ShiftCopyWith<$Res> get shift {
-    return $ShiftCopyWith<$Res>(_value.shift, (value) {
+  $ShiftDTOCopyWith<$Res>? get shift {
+    if (_value.shift == null) {
+      return null;
+    }
+
+    return $ShiftDTOCopyWith<$Res>(_value.shift!, (value) {
       return _then(_value.copyWith(shift: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
-  factory _$$_TodoCopyWith(_$_Todo value, $Res Function(_$_Todo) then) =
-      __$$_TodoCopyWithImpl<$Res>;
+abstract class _$$_TodoDTOCopyWith<$Res> implements $TodoDTOCopyWith<$Res> {
+  factory _$$_TodoDTOCopyWith(
+          _$_TodoDTO value, $Res Function(_$_TodoDTO) then) =
+      __$$_TodoDTOCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {UniqueId<String?> id,
-      BasicTextField title,
-      BasicTextField description,
-      bool assignToNextShift,
-      KtList<User>? nurses,
-      Shift shift,
-      ColorField color,
-      DateTime? completedAt,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      DateTime? deletedAt});
+      {@StringSerializer() String? id,
+      @StringSerializer() String? title,
+      @StringSerializer() String? description,
+      @BooleanSerializer() bool? assignToNextShift,
+      Iterable<String>? nurses,
+      ShiftDTO? shift,
+      @StringSerializer() String? color,
+      @TimestampConverter() DateTime? completedAt,
+      @TimestampConverter() DateTime? createdAt,
+      @TimestampConverter() DateTime? updatedAt,
+      @TimestampConverter() DateTime? deletedAt});
 
   @override
-  $ShiftCopyWith<$Res> get shift;
+  $ShiftDTOCopyWith<$Res>? get shift;
 }
 
 /// @nodoc
-class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
-    implements _$$_TodoCopyWith<$Res> {
-  __$$_TodoCopyWithImpl(_$_Todo _value, $Res Function(_$_Todo) _then)
+class __$$_TodoDTOCopyWithImpl<$Res>
+    extends _$TodoDTOCopyWithImpl<$Res, _$_TodoDTO>
+    implements _$$_TodoDTOCopyWith<$Res> {
+  __$$_TodoDTOCopyWithImpl(_$_TodoDTO _value, $Res Function(_$_TodoDTO) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? description = null,
-    Object? assignToNextShift = null,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? description = freezed,
+    Object? assignToNextShift = freezed,
     Object? nurses = freezed,
-    Object? shift = null,
-    Object? color = null,
+    Object? shift = freezed,
+    Object? color = freezed,
     Object? completedAt = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? deletedAt = freezed,
   }) {
-    return _then(_$_Todo(
-      id: null == id
+    return _then(_$_TodoDTO(
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId<String?>,
-      title: null == title
+              as String?,
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
-      description: null == description
+              as String?,
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as BasicTextField,
-      assignToNextShift: null == assignToNextShift
+              as String?,
+      assignToNextShift: freezed == assignToNextShift
           ? _value.assignToNextShift
           : assignToNextShift // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       nurses: freezed == nurses
           ? _value.nurses
           : nurses // ignore: cast_nullable_to_non_nullable
-              as KtList<User>?,
-      shift: null == shift
+              as Iterable<String>?,
+      shift: freezed == shift
           ? _value.shift
           : shift // ignore: cast_nullable_to_non_nullable
-              as Shift,
-      color: null == color
+              as ShiftDTO?,
+      color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as ColorField,
+              as String?,
       completedAt: freezed == completedAt
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
@@ -229,56 +249,67 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
 }
 
 /// @nodoc
-
-class _$_Todo extends _Todo with DiagnosticableTreeMixin {
-  const _$_Todo(
-      {required this.id,
-      required this.title,
-      required this.description,
-      this.assignToNextShift = true,
+@JsonSerializable()
+class _$_TodoDTO extends _TodoDTO with DiagnosticableTreeMixin {
+  const _$_TodoDTO(
+      {@StringSerializer() this.id,
+      @StringSerializer() this.title,
+      @StringSerializer() this.description,
+      @BooleanSerializer() this.assignToNextShift,
       this.nurses,
-      required this.shift,
-      required this.color,
-      this.completedAt,
-      this.createdAt,
-      this.updatedAt,
-      this.deletedAt})
+      this.shift,
+      @StringSerializer() this.color,
+      @TimestampConverter() this.completedAt,
+      @TimestampConverter() this.createdAt,
+      @TimestampConverter() this.updatedAt,
+      @TimestampConverter() this.deletedAt})
       : super._();
 
+  factory _$_TodoDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_TodoDTOFromJson(json);
+
   @override
-  final UniqueId<String?> id;
+  @StringSerializer()
+  final String? id;
   @override
-  final BasicTextField title;
+  @StringSerializer()
+  final String? title;
   @override
-  final BasicTextField description;
+  @StringSerializer()
+  final String? description;
   @override
-  @JsonKey()
-  final bool assignToNextShift;
+  @BooleanSerializer()
+  final bool? assignToNextShift;
   @override
-  final KtList<User>? nurses;
+  final Iterable<String>? nurses;
   @override
-  final Shift shift;
+  final ShiftDTO? shift;
   @override
-  final ColorField color;
+  @StringSerializer()
+  final String? color;
   @override
+  @TimestampConverter()
   final DateTime? completedAt;
   @override
+  @TimestampConverter()
   final DateTime? createdAt;
   @override
+  @TimestampConverter()
   final DateTime? updatedAt;
   @override
+  @TimestampConverter()
   final DateTime? deletedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Todo(id: $id, title: $title, description: $description, assignToNextShift: $assignToNextShift, nurses: $nurses, shift: $shift, color: $color, completedAt: $completedAt, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
+    return 'TodoDTO(id: $id, title: $title, description: $description, assignToNextShift: $assignToNextShift, nurses: $nurses, shift: $shift, color: $color, completedAt: $completedAt, createdAt: $createdAt, updatedAt: $updatedAt, deletedAt: $deletedAt)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Todo'))
+      ..add(DiagnosticsProperty('type', 'TodoDTO'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
@@ -296,14 +327,14 @@ class _$_Todo extends _Todo with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Todo &&
+            other is _$_TodoDTO &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.assignToNextShift, assignToNextShift) ||
                 other.assignToNextShift == assignToNextShift) &&
-            (identical(other.nurses, nurses) || other.nurses == nurses) &&
+            const DeepCollectionEquality().equals(other.nurses, nurses) &&
             (identical(other.shift, shift) || other.shift == shift) &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.completedAt, completedAt) ||
@@ -316,6 +347,7 @@ class _$_Todo extends _Todo with DiagnosticableTreeMixin {
                 other.deletedAt == deletedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -323,7 +355,7 @@ class _$_Todo extends _Todo with DiagnosticableTreeMixin {
       title,
       description,
       assignToNextShift,
-      nurses,
+      const DeepCollectionEquality().hash(nurses),
       shift,
       color,
       completedAt,
@@ -334,48 +366,67 @@ class _$_Todo extends _Todo with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TodoCopyWith<_$_Todo> get copyWith =>
-      __$$_TodoCopyWithImpl<_$_Todo>(this, _$identity);
+  _$$_TodoDTOCopyWith<_$_TodoDTO> get copyWith =>
+      __$$_TodoDTOCopyWithImpl<_$_TodoDTO>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TodoDTOToJson(
+      this,
+    );
+  }
 }
 
-abstract class _Todo extends Todo {
-  const factory _Todo(
-      {required final UniqueId<String?> id,
-      required final BasicTextField title,
-      required final BasicTextField description,
-      final bool assignToNextShift,
-      final KtList<User>? nurses,
-      required final Shift shift,
-      required final ColorField color,
-      final DateTime? completedAt,
-      final DateTime? createdAt,
-      final DateTime? updatedAt,
-      final DateTime? deletedAt}) = _$_Todo;
-  const _Todo._() : super._();
+abstract class _TodoDTO extends TodoDTO {
+  const factory _TodoDTO(
+      {@StringSerializer() final String? id,
+      @StringSerializer() final String? title,
+      @StringSerializer() final String? description,
+      @BooleanSerializer() final bool? assignToNextShift,
+      final Iterable<String>? nurses,
+      final ShiftDTO? shift,
+      @StringSerializer() final String? color,
+      @TimestampConverter() final DateTime? completedAt,
+      @TimestampConverter() final DateTime? createdAt,
+      @TimestampConverter() final DateTime? updatedAt,
+      @TimestampConverter() final DateTime? deletedAt}) = _$_TodoDTO;
+  const _TodoDTO._() : super._();
+
+  factory _TodoDTO.fromJson(Map<String, dynamic> json) = _$_TodoDTO.fromJson;
 
   @override
-  UniqueId<String?> get id;
+  @StringSerializer()
+  String? get id;
   @override
-  BasicTextField get title;
+  @StringSerializer()
+  String? get title;
   @override
-  BasicTextField get description;
+  @StringSerializer()
+  String? get description;
   @override
-  bool get assignToNextShift;
+  @BooleanSerializer()
+  bool? get assignToNextShift;
   @override
-  KtList<User>? get nurses;
+  Iterable<String>? get nurses;
   @override
-  Shift get shift;
+  ShiftDTO? get shift;
   @override
-  ColorField get color;
+  @StringSerializer()
+  String? get color;
   @override
+  @TimestampConverter()
   DateTime? get completedAt;
   @override
+  @TimestampConverter()
   DateTime? get createdAt;
   @override
+  @TimestampConverter()
   DateTime? get updatedAt;
   @override
+  @TimestampConverter()
   DateTime? get deletedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_TodoCopyWith<_$_Todo> get copyWith => throw _privateConstructorUsedError;
+  _$$_TodoDTOCopyWith<_$_TodoDTO> get copyWith =>
+      throw _privateConstructorUsedError;
 }

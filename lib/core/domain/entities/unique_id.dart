@@ -11,7 +11,7 @@ class UniqueId<T> {
 
   factory UniqueId.fromExternal(T id) => UniqueId._(id);
 
-  factory UniqueId.random({int chars = 2, int numbers = 4}) {
+  factory UniqueId.random({int chars = 6, int numbers = 10}) {
     final _random = math.Random();
 
     /// Generate random list of numbers of length [numbers]

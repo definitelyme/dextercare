@@ -19,8 +19,8 @@ class SplashScreen extends StatefulWidget {
     Future.delayed(const Duration(milliseconds: 1500), () {
       navigator.navigatorKey.currentContext?.read<AuthWatcherCubit>().subscribeToAuthChanges((option) async {
         await option.fold(
-          () async => navigator.pushAndPopUntil(const LoginRoute(), predicate: (r) => false),
-          (_) async => navigator.pushAndPopUntil(const TodoListRoute(), predicate: (r) => false),
+          () async => navigator.replaceAll([const LoginRoute()]),
+          (_) async => navigator.replace(const TodoListRoute()),
         );
       });
     });
@@ -37,12 +37,13 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
+      backgroundColor: Palette.primaryColor,
       body: Stack(
         children: [
           Center(
             child: SvgPicture.asset(
               AssetsSvgsHome.logoSVG,
-              color: Palette.onSurface,
+              color: Colors.white,
               width: 0.35.w,
             ),
           ),
@@ -56,6 +57,8 @@ class SplashScreenState extends State<SplashScreen> {
                 width: 27,
                 height: 27,
                 strokeWidth: 2,
+                color: Colors.white,
+                colorDark: Colors.white,
               ),
             ).safeBottom,
           ),

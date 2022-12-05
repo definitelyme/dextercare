@@ -7,6 +7,7 @@ import 'package:dextercare/managers/locator/locator.dart';
 import 'package:dextercare/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 /// A stateless widget that renders LoginScreen.
 class LoginScreen extends StatelessWidget with AutoRouteWrapper {
@@ -34,15 +35,67 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
   Widget build(BuildContext context) {
     return AdaptiveScaffold(
       body: Center(
-        child: BlocSelector<AuthCubit, AuthState, bool>(
-          selector: (s) => s.isGoogleAuthLoading,
-          builder: (c, isLoading) => Padding(
-            padding: EdgeInsets.symmetric(horizontal: sidePadding),
-            child: AdaptiveButton(
-              onPressed: context.read<AuthCubit>().signInWithGoogle,
-              loadingData: (d) => d.copyWith(isLoading: isLoading),
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              text: 'Continue with Google',
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: sidePadding),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                BlocSelector<AuthCubit, AuthState, bool>(
+                  selector: (s) => s.isLoading,
+                  builder: (c, isLoading) => AdaptiveButton(
+                    onPressed: context.read<AuthCubit>().loginAnonymous,
+                    loadingData: (d) => d.copyWith(isLoading: isLoading),
+                    materialData: (d) => d.copyWith(height: 0.065.h),
+                    cupertinoData: (d) => d.copyWith(height: 0.065.h),
+                    disabled: isLoading,
+                    textColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 18),
+                    text: 'Use Default Account',
+                  ),
+                ),
+                //
+                0.06.vsh,
+                //
+                BlocSelector<AuthCubit, AuthState, bool>(
+                  selector: (s) => s.isGoogleAuthLoading,
+                  builder: (c, isLoading) => AdaptiveButton(
+                    onPressed: context.read<AuthCubit>().signInWithGoogle,
+                    loadingData: (d) => d.copyWith(isLoading: isLoading),
+                    materialData: (d) => d.copyWith(height: 0.065.h),
+                    cupertinoData: (d) => d.copyWith(height: 0.065.h),
+                    backgroundColor: Palette.grey6,
+                    disabled: isLoading,
+                    padding: const EdgeInsets.symmetric(horizontal: 18),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset(AssetsSvgsAuth.googleSVG),
+                        //
+                        0.03.hsw,
+                        //
+                        const AdaptiveText(
+                          'Continue with Google',
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        //
+                        if (isLoading) ...[
+                          0.03.hsw,
+                          //
+                          const CircularProgressBar.adaptive(
+                            width: 23,
+                            height: 23,
+                            strokeWidth: 2.5,
+                            color: Palette.primaryColor,
+                            colorDark: Palette.primaryColor,
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

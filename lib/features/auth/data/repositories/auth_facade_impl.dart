@@ -5,7 +5,6 @@ import 'package:dextercare/core/domain/entities/entities.dart';
 import 'package:dextercare/features/auth/domain/entities/index.dart';
 import 'package:dextercare/features/auth/domain/index.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -22,6 +21,22 @@ class AuthFacadeImpl extends AuthFacade {
   const AuthFacadeImpl(this.firebaseAuth, this.googleSignIn);
 
   @override
+  Future<Either<AuthResponse, User>> createAccount(EmailAddress email, Password password) async {
+    try {
+      final result = await firebaseAuth.createUserWithEmailAndPassword(email: email.getOrNull!, password: password.getOrNull!);
+      return right(result.user!.domain);
+    } on AuthResponse catch (e) {
+      return left(e);
+    } on FirebaseAuthException catch (e) {
+      return _handleAuthException(e);
+    } on PlatformException catch (e) {
+      return left(AuthResponse.failure(message: '${e.message}', code: e.code));
+    } catch (e) {
+      return left(AuthResponse.failure(message: '$e'));
+    }
+  }
+
+  @override
   Option<User?> get currentUser => optionOf(firebaseAuth.currentUser?.domain);
 
   @override
@@ -29,6 +44,22 @@ class AuthFacadeImpl extends AuthFacade {
 
   @override
   Stream<Option<User?>> get onUserChanges => firebaseAuth.userChanges().map((user) => optionOf(user?.domain));
+
+  @override
+  Future<Either<AuthResponse, User>> signInWithEmailAndPassword(EmailAddress email, Password password) async {
+    try {
+      final result = await firebaseAuth.signInWithEmailAndPassword(email: email.getOrNull!, password: password.getOrNull!);
+      return right(result.user!.domain);
+    } on AuthResponse catch (e) {
+      return left(e);
+    } on FirebaseAuthException catch (e) {
+      return _handleAuthException(e);
+    } on PlatformException catch (e) {
+      return left(AuthResponse.failure(message: '${e.message}', code: e.code));
+    } catch (e) {
+      return left(AuthResponse.failure(message: '$e'));
+    }
+  }
 
   @override
   Future<Either<AuthResponse, User>> signInWithGoogle() async {
@@ -62,6 +93,12 @@ class AuthFacadeImpl extends AuthFacade {
     }
   }
 
+  @override
+  Future<void> signOut() async {
+    await googleSignIn.signOut();
+    await firebaseAuth.signOut();
+  }
+
   Future<Either<AuthResponse, T>> _handleAuthException<T>(FirebaseAuthException e) async {
     switch (e.code) {
       case 'account-exists-with-different-credential':
@@ -84,7 +121,4 @@ class AuthFacadeImpl extends AuthFacade {
         return left(AuthResponse.failure(message: '${e.message}'));
     }
   }
-
-  @override
-  Future<void> signOut() => Future.wait([firebaseAuth.signOut(), googleSignIn.signOut()]);
 }

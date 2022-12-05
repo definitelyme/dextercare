@@ -19,6 +19,10 @@ abstract class AuthFacade {
 
   Stream<Option<User?>> get onUserChanges;
 
+  Future<Either<AuthResponse, User>> createAccount(EmailAddress email, Password password);
+
+  Future<Either<AuthResponse, User>> signInWithEmailAndPassword(EmailAddress email, Password password);
+
   Future<Either<AuthResponse, User>> signInWithGoogle();
 
   Future<void> signOut();

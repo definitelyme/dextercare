@@ -504,8 +504,16 @@ extension BulidContextX on BuildContext {
 }
 
 extension StringX on String {
-  // Capitalize the first letter of a string
+  /// Capitalize only first letter in string
+  ///
+  /// Example: your name => Your name
   String capitalizeFirst([String? str]) => '${(str ?? this[0]).toUpperCase()}${substring(1).toLowerCase()}';
+
+  String titleCase() {
+    var splitStr = toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) splitStr[i] = splitStr[i][0].toUpperCase() + splitStr[i].substring(1).toLowerCase();
+    return splitStr.join(' ');
+  }
 
   // Returns a string in currency
   NumberFormat asCurrencyFormat({
@@ -542,121 +550,6 @@ extension StringX on String {
     return asCurrencyFormat(
             mask: mask, includeSymbol: symbol, currency: _currency, decimal: _this != null && !_this.isInteger, locale: _locale)
         .format(_this);
-  }
-}
-
-extension ListX<T> on Iterable<T> {
-  T? firstOrNull([bool Function(T)? predicate]) {
-    if (predicate == null) {
-      if (this is List) {
-        final list = this as List<T>;
-        list.isEmpty ? null : list.first;
-      }
-      final i = iterator;
-      if (!i.moveNext()) return null;
-      return i.current;
-    } else {
-      for (final e in this) {
-        if (predicate(e)) return e;
-      }
-      return null;
-    }
-  }
-
-  /// Adds the list of elements [other] to the end of the list.
-  List<T> plus(List<T> other) {
-    final _list = toList()..addAll(other);
-    return _list;
-  }
-
-  /// Removes all elements [other] from the list
-  List<T> minus(List<T> other) {
-    return where((e) => !other.contains(e)).toList();
-  }
-
-  /// Adds an element [T] to the end of the list.
-  List<T> plusElement(T element) {
-    final _list = toList()..add(element);
-    return _list;
-  }
-
-  /// Removes an element [T] from the list, if it is present.
-  ///
-  /// Retains the order of the elements.
-  List<T> minusElement(T element) {
-    final _list = toList();
-    _list.remove(element);
-    return _list;
-  }
-
-  T? elementAtOrNull(int? index) {
-    if (index == null || index < 0 || isEmpty || index >= length) return null;
-    return elementAt(index);
-  }
-
-  List<R> mapIndexed<R>(R Function(int i, T item) transform) {
-    List<R> result = [];
-    for (int i = 0; i < length; i++) {
-      // Time complexity: O(n)
-      R item = transform(i, elementAt(i));
-      result.add(item);
-    }
-    return result;
-  }
-
-  List<T> _replace(T newValue, {required bool Function(T prev, T current) predicate}) {
-    return map((e) => predicate(e, newValue) ? newValue : e).toList();
-  }
-
-  /// Returns `true` if the collection has no elements or no elements match the given [predicate].
-  bool _none(bool Function(T) predicate) {
-    if (isEmpty) return true;
-
-    for (final element in this) {
-      if (predicate(element)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  List<T> plusElementAndMapIfAbsent<K>(
-    T other, {
-    required bool Function(T, T) none,
-    bool Function(T, T)? replaceIf,
-    KtPlus position = KtPlus.end,
-  }) {
-    final Iterable<T> currentList;
-
-    if (isNotEmpty && replaceIf != null)
-      currentList = _replace(other, predicate: replaceIf);
-    else
-      currentList = this;
-
-    final isAbsent = currentList._none((it2) => none(other, it2));
-
-    if (!isAbsent) return currentList.toList();
-
-    return position.when(
-      start: () => List.from([other, ...currentList]),
-      end: () => List.from([...currentList, other]),
-    );
-  }
-}
-
-enum KtPlus { start, end }
-
-extension on KtPlus {
-  T when<T>({
-    required T Function() start,
-    required T Function() end,
-  }) {
-    switch (this) {
-      case KtPlus.start:
-        return start.call();
-      case KtPlus.end:
-        return end.call();
-    }
   }
 }
 

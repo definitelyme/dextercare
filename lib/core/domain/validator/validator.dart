@@ -62,4 +62,25 @@ class Validator {
 
     return right(email);
   }
+
+  static _Validator<String?> passwordValidator(String? password, {FieldValidation? mode}) {
+    if (password == null) return left(FieldObjectException.empty());
+
+    final _mode = mode ?? FieldValidation.basic;
+
+    const length = 6;
+
+    return _mode.when(
+      basic: () {
+        if (password.length < length) {
+          return left(FieldObjectException.invalid('Password must be at least $length characters'));
+        }
+
+        return right(password);
+      },
+      orElse: () {
+        return right(password);
+      },
+    );
+  }
 }

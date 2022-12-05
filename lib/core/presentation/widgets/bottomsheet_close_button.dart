@@ -26,7 +26,7 @@ class BottomsheetCloseButton extends StatelessWidget {
             child: AdaptiveToolbar.materialToolbarAction(
               tooltip: 'Close',
               onPressed: navigator.pop,
-              icon: Icons.arrow_back,
+              iconData: Icons.arrow_back,
               backgroundColor: Palette.transparent,
             ),
           ),

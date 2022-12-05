@@ -13,7 +13,7 @@ class ThemeCubit extends Cubit<AppTheme> with _ThemeCubit {
   static const String _themeKey = '${Const.packageName}-style';
   static const String _themeModeKey = '${Const.packageName}-theme-mode';
 
-  static AppTheme get defaultTheme => AppTheme.dark();
+  static AppTheme get defaultTheme => AppTheme.light();
 
   ThemeCubit() : super(defaultTheme) {
     HiveClient.initListener((status) {
