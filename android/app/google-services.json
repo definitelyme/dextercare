@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "666486309718",
+    "project_id": "dexter-care",
+    "storage_bucket": "dexter-care.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666486309718:android:1b2dc1a2f5ec9c9e92ccf7",
+        "android_client_info": {
+          "package_name": "com.dexterhealth.dextercare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666486309718-0oigjj1cnahdhjm1te9vo3ibecamlacd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dexterhealth.dextercare",
+            "certificate_hash": "b5b23595b141d785568f1dd67849ff002550c071"
+          }
+        },
+        {
+          "client_id": "666486309718-dionc4cnnm913upe202h8gbe5vael7gj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dexterhealth.dextercare",
+            "certificate_hash": "83acd22dcbe65db29e67f1e06823e11a45605c63"
+          }
+        },
+        {
+          "client_id": "666486309718-eg0pbkds87qu43poqu95gt1sq6enmakb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnFkErUg3votCxgAh-dZEFF_FXyn2xE-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666486309718-eg0pbkds87qu43poqu95gt1sq6enmakb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "666486309718-mgo5pe91prf50m4jpsjgiaenetcalcql.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dexterhealth.dextercare"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

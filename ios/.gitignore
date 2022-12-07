@@ -33,5 +33,5 @@ Runner/GeneratedPluginRegistrant.*
 !default.pbxuser
 !default.perspectivev3
 Podfile.lock
-**/GoogleService-Info.plist
-**/firebase_app_id_file.json
+# **/GoogleService-Info.plist
+# **/firebase_app_id_file.json

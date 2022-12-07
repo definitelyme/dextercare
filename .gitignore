@@ -32,8 +32,8 @@ migrate_working_dir/
 .pub/
 /build/
 pubspec.lock
-/lib/config/secrets.dart
-**/firebase_options.dart
+# /lib/config/secrets.dart
+# **/firebase_options.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
